@@ -1,0 +1,33 @@
+.App {
+  text-align: center;
+}
+
+.description {
+  margin-top: 3%;
+}
+
+.mb-3 {
+  margin-left: 3%;
+  margin-right: 3%;
+}
+
+.calculation {
+  border: 2px solid green;
+  padding: 2.5%;
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top: 2.5%;
+}
+
+
+/*.App {
+  font-family: sans-serif;
+  text-align: center;
+  //margin-top: 1%;
+  padding-top: 16;
+  padding-bottom: 16;
+  padding-left: 10;
+  padding-right: 10;
+  margin: auto;
+  border: "1px solid #cccccc"
+}*/
