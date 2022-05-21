@@ -44,9 +44,9 @@ module.exports = {
     // },
   
     polytest: {
-       url: "https://polygon-mumbai.g.alchemy.com/v2/OFCnAwgbUNPiQwt6GLxMaV3V4C3kpHYe",// using alchemy instead of moralis. add your own URL in .env
+       url: "",// using alchemy instead of moralis. add your own URL in .env
        gasPrice: 2000000000,
-       accounts: [`256f900a54e93e3904f8512a019414ceb1abcb43abb1855755a32ee750754c3f`]
+       accounts: [`private key SuperApp owner]
     },
 
     // localhost: {

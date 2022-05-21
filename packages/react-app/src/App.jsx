@@ -41,7 +41,7 @@ require("dotenv");
 
 
 //add NFT billboard here; note the format and variables that goes into it
-//ProductName input for Current Price 50 fDAI equivalent to  10 STAR 
+//ProductName input for Current Price 60 fDAI equivalent to  12 STAR 
 import NFTBillboard from "./views/NFTBillboard"; // Asset Exchange Bank dashboard with ST tokens and lenders info; dai streamed into 
 
 
@@ -207,32 +207,18 @@ const web3Modal = new Web3Modal({
   },
 });
 
-//Total ST of purchaser shown on the front end: could use the method I have in readData.js here in App.jsx and then
-//output this on the front end eg via NFTBillboard.js
-
-//async function main( inputs) {   follow exacly the code in createflow; under App()
-//Include a section here where you will have the following:
-// all the const =  
-//the asyn createFLow(), ...... ; input from here (and taken from front end) when passing in arguments for tx
-//section for the various calc; borrower input / calc / front end output 
 
 
 //Declarations before the main() section starts
 
-//Declaration for the tx RECEPIENT =  deployed TradeableCashFlow.sol
 
-//const tradeableCashflowJSON = require("../artifacts/contracts/TradeableCashflow.sol/TradeableCashflow.json");
-//const tradeableCashflowABI = tradeableCashflowJSON.abi; 
-//const deployedTradeableCashflow = require("../deployments/polytest/TradeableCashflow.json");
-//const tradeableCashflowAddress = deployedTradeableCashflow.address;
-//Module not found: You attempted to import ../artifacts/contracts/TradeableCashflow.sol/TradeableCashflow.json which falls outside of the project src/ directory. Relative imports outside of src/ are not supported.
 
-const TradeableCashFlowAddress = "0xc502854Fb0F440732F4b98E17Cbdf27d643f83e5"
+const TradeableCashFlowAddress = "0xc502854Fb0F440732F4b98E17Cbdf27d643f83e5"  
 
 //your address here: update this to use Borrower account to purchase
 //create a borrower on Metamask as Borrower will call the createFlow tx
 //CHECK APP.JS: _sender should be inputed from the connected Metamask borrower account???? 
-const _sender = "0xC372aC5c65dD863451Aa1D8C9559F9a60aFf2666"
+const _sender = " Insert Borrowers Addres here"
 
 
 
@@ -249,7 +235,7 @@ function App() {
   //Setting initial state vars
   //What is injectedProvider
   const [injectedProvider, setInjectedProvider] = useState(); // starts with undefined
-  const [address, setAddress] = useState("0xC372aC5c65dD863451Aa1D8C9559F9a60aFf2666");
+  const [address, setAddress] = useState();
 
   console.log("injectedProvider", injectedProvider);
   console.log("localProvider",localProvider);
@@ -344,7 +330,7 @@ function App() {
   //PUBLIC VARIABLE(eg usreData) in a smart contract
   //initial default message = 'SuperAssetExchange Open'
   //Note: variables must be set to default when starting again when connect with new Borrower address
-  //see pattern form SuperCard
+
   const message = useContractReader(readContracts, "TradeableCashflow", "userData")
   const billboardOwner = useContractReader(readContracts, "TradeableCashflow", "_receiver") 
      
@@ -355,10 +341,7 @@ function App() {
   console.log("billboardOwner",billboardOwner); 
   
   // SuperToken Balances are available from the SF console or dashboard for the SuperApp
-  // once deployed, can obtain the arguments and pass into below
-  //???? How doe you get this balance at the end of the stream session; show console(Streaming) and front end (final)
-  //const assetTokenBalance = useContractReader(readContracts?????, "AMST", "balanceOf", ["insert the address",]);
-  //console.log("assetTokenBalance",assetTokenBalance);
+  
 
 
   //console.log("targetNetwork", targetNetwork); /// new
@@ -585,7 +568,7 @@ async function createNewFlow() {
 
   //Borrower's details directly ehre
   const signerB = sf.createSigner({
-    privateKey: "75e1781cdd0006239831f2c6b05f327f59c5722ae6ef69f79d9a86e39f7c0081",
+    privateKey: "",  // insert here
     provider: customHttpProvider
   });
 
@@ -596,7 +579,7 @@ async function createNewFlow() {
 
   try {
     const createFlowOperation = sf.cfaV1.createFlow({
-      flowRate: "3858024691359", // a 10DAI per month flow to pay for credit application
+      flowRate: "3858024691359", // 10 DAI per month flow to pay for credit application
       receiver: TradeableCashFlowAddress,   
       superToken: fDAIx,
       userData: userData 
@@ -625,7 +608,7 @@ async function updateFlowTimer() {
 
   //Borrower's details directly ehre
   const signerB = sf.createSigner({
-    privateKey: "75e1781cdd0006239831f2c6b05f327f59c5722ae6ef69f79d9a86e39f7c0081",
+    privateKey: "",
     provider: customHttpProvider
   });
 
@@ -677,13 +660,13 @@ async function deleteFlow() {
   console.log("customHttpProvider",customHttpProvider);
 
   const sf = await Framework.create({
-    networkName: "mumbai", //or use const targetNetwork from above
+    networkName: "mumbai", 
     provider: customHttpProvider  
   });
 
   //Borrower's details directly here
   const signerB = sf.createSigner({
-    privateKey: "75e1781cdd0006239831f2c6b05f327f59c5722ae6ef69f79d9a86e39f7c0081",  //process.env.MUMBAI_BORROWER_PRIV_KEY
+    privateKey: "",  //process.env.MUMBAI_BORROWER_PRIV_KEY
     provider: customHttpProvider
   });
   
@@ -768,7 +751,6 @@ console.log("inFlowRateST", inFlowRateST);
 //convert to inFlowRateST to show frontend ${flowRateDAI}
 
 
-//In NFTBillboard: show Originl Asset Price 60 DAI stream exchange for 10 STARs(digital rep for asset ownership)
 
 
   return (
