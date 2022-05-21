@@ -22,7 +22,7 @@ const config = require("../hardhat.config");
 
 require("dotenv");
 //your address here...
-const owner = '0x50d12B009b4118546d82A3c5678C0Af7a7fbB5cD';
+const owner = '';
 
 module.exports = async ({ getNamedAccounts, deployments }) => {
   const { deploy } = deployments;
